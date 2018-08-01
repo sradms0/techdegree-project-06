@@ -1,0 +1,15 @@
+{
+  "name": "techdegree-project-06",
+  "version": "1.0.0",
+  "dependencies": {
+      "cheerio": "latest",
+      "json2csv": "latest"
+  },
+  "description": "a content scraper for http://shirts4mike.com/ shirts",
+  "main": "scraper.js",
+  "scripts": {
+      "start": "node scraper.js"
+  },
+  "author": "Scott Adams",
+  "license": "ISC"
+}
