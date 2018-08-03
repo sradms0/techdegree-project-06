@@ -2,6 +2,7 @@
   "name": "techdegree-project-06",
   "version": "1.0.0",
   "dependencies": {
+      "request": "latest",
       "cheerio": "latest",
       "json2csv": "latest"
   },
