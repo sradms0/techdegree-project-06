@@ -16,6 +16,8 @@ function logger(error) {
 
     if (error.message.toLowerCase().includes('enotfound')) {
         logMessage += 'page not found (check network connection)';
+    } else if (error.message.toLowerCase().includes('invalid uri')){
+        logMessage += `invalid url ${homeUrl}`;
     } else {
         logMessage += `something went wrong with fetching from ${homeUrl}`;
     }
