@@ -94,20 +94,24 @@ function createShirts() {
 // get all shirt objects, then create csv file
 function main() {
     createShirts().then(shirts => {
-        const fields = Object.keys(shirts[0]);
-        const json2csvParser = new Json2csvParser({fields});
-        const csv = json2csvParser.parse(shirts);
+        try {
+            const fields = Object.keys(shirts[0]);
+            const json2csvParser = new Json2csvParser({fields});
+            const csv = json2csvParser.parse(shirts);
 
-        const dataPath = './data';
-        if (!fs.existsSync(`${dataPath}`)) {
-            fs.mkdirSync(`${dataPath}`);
-            console.log(`${dataPath} directory created`);
+            const dataPath = './data';
+            if (!fs.existsSync(`${dataPath}`)) {
+                fs.mkdirSync(`${dataPath}`);
+                console.log(`${dataPath} directory created`);
+            }
+
+            fs.writeFile(`${dataPath}/${new Date().toISOString().slice(0, 10)}.csv`, csv, (error) => {
+                if (error) throw error;
+                console.log('request successful');
+            })
+        } catch (error) {
+            logger(error);
         }
-
-        fs.writeFile(`${dataPath}/${new Date().toISOString().slice(0, 10)}.csv`, csv, (error) => {
-            if (error) throw error;
-            console.log('request successful');
-        })
     });
 }
 
